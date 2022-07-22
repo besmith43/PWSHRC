@@ -13,12 +13,17 @@ import-module $home\Documents\PWSH\aliases.psm1
 
 set-systemAlias
 
-if (Test-CommandExists Set-PowerLinePrompt)
+#if (Test-CommandExists Set-PowerLinePrompt)
+#{
+	#if ($IsWindows -or $IsLinux)
+	#{
+		#Set-PowerLinePrompt -SetCurrentDirectory -RestoreVirtualTerminal -Newline -Timestamp -Colors "#00DDFF", "#0066FF"
+	#}	
+#}
+
+if (Test-CommandExists oh-my-posh)
 {
-	if ($IsWindows -or $IsLinux)
-	{
-		Set-PowerLinePrompt -SetCurrentDirectory -RestoreVirtualTerminal -Newline -Timestamp -Colors "#00DDFF", "#0066FF"
-	}	
+	oh-my-posh --init --shell pwsh --config C:\Users\besmi\onedrive\gist\custom-night-owl.omp.json | Invoke-Expression
 }
 
 if ($env:computername -eq "NerdGaming")
